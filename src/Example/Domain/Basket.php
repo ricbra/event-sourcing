@@ -25,20 +25,13 @@ final class Basket
 
     /**
      * @param BasketId $basketId
-     */
-    private function __construct(BasketId $basketId)
-    {
-        yield new BasketPickedUp($basketId);
-    }
-
-    /**
-     * @param BasketId $basketId
      *
      * @return Basket
      */
     public static function pickUp(BasketId $basketId)
     {
-        return new Basket($basketId);
+        yield new Basket;
+        yield new BasketPickedUp($basketId);
     }
 
     /**

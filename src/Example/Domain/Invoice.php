@@ -25,20 +25,12 @@ final class Invoice
     /**
      * @param InvoiceId $invoiceId
      * @param ProductId[] $productIds
-     */
-    private function __construct(InvoiceId $invoiceId, array $productIds)
-    {
-        yield new InvoiceGenerated($invoiceId, $productIds);
-    }
-
-    /**
-     * @param InvoiceId $invoiceId
-     * @param ProductId[] $productIds
      *
      * @return Invoice
      */
     public static function generate(InvoiceId $invoiceId, array $productIds)
     {
-        return new self($invoiceId, $productIds);
+        yield new Invoice;
+        yield new InvoiceGenerated($invoiceId, $productIds);
     }
 }
